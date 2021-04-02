@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" charset="UTF-8" src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"></script>
+    </head>
+	<body>
+        <div>
+<!--            <p>{{ .SubMchId }}</p>-->
+<!--            <p>{{ .OutTradeNo }}</p>-->
+<!--            <p>{{ .CheckCode }}</p>-->
+            <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic3.zhimg.com%2F50%2Fv2-484fc9ed5aaa4d55c68ab4387ce58528_hd.jpg&refer=http%3A%2F%2Fpic3.zhimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1618736641&t=675802d089a0fcb82fa0fc4c5140c1a1" width="640px" height="600px"/>
+        </div>
+    </body>
+    <script type="application/javascript">
+        window.onload=function () {
+            let mchData ={action:'onIframeReady',displayStyle:'SHOW_CUSTOM_PAGE'}
+            let postData = JSON. stringify(mchData)
+            parent.postMessage(postData,'https://payapp.weixin.qq.com')
+        }
+    </script>
+</html>

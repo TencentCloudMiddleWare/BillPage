@@ -1,0 +1,41 @@
+component: scf
+name: watchdog-demo
+inputs:
+  src: ./publish
+  runtime: CustomRuntime
+  region: ap-guangzhou
+  functionName: ${name}-${stage}-${app} #云函数名称
+  environment:
+    variables:
+      WATCHDOG_RUN_PATH: "./BillPage"
+      WATCHDOG_DSIPATCH_MODE: "api"
+      WATCHDOG_DSIPATCH_PATH: "http://127.0.0.1:8080"
+      WATCHDOG_DEBUG: "True"
+  events:
+    - apigw:
+        parameters:
+          serviceId: service-ehulnk74
+          protocols:
+            - http
+            - https
+          endpoints:
+            - path: /ticket
+              method: GET
+              param:
+                - name: sub_mch_id
+                  position: QUERY
+                  required: false
+                  type: string
+                - name: out_trade_no
+                  position: QUERY
+                  required: false
+                  type: string
+                - name: check_code
+                  position: QUERY
+                  required: false
+                  type: string
+              function:
+                isIntegratedResponse: true
+                functionQualifier: $DEFAULT
+            - path: /WXPAY_verify_1600662107.txt
+              method: GET
